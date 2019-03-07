@@ -1,10 +1,3 @@
-var jsdom = require("jsdom");
-    const { JSDOM } = jsdom;
-    const { window } = new JSDOM();
-    const { document } = (new JSDOM('')).window;
-    global.document = document;
-var $ = jQuery = require('jquery')(window);
-
     var currentFriends = [
         {
             "name": "Tom",
@@ -106,7 +99,7 @@ var $ = jQuery = require('jquery')(window);
     
 
 
-function submitInfo ($) {
+
     $(document).on("click", "#submit", function(){
         event.preventDefault();
 
@@ -139,9 +132,3 @@ function submitInfo ($) {
             }   
         });
     });
-};
-
-module.exports = {
-    submitInfo: submitInfo,
-
-    };

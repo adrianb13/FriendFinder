@@ -19,8 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/api/friends', apiRoutes);
 app.use('/', htmlRoutes);
-app.use(express.static(path.join(__dirname, "./app/public")));
 app.use(express.static(path.join(__dirname, "./app/data")));
+app.use(express.static(path.join(__dirname, "./app/public")));
+app.use(express.static(path.join(__dirname, "./app")));
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
