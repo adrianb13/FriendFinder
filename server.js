@@ -17,10 +17,18 @@ var PORT = process.env.PORT || 5500;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(apiRoutes);
-app.use(htmlRoutes);
-app.use(friends);
+app.use('/api/friends', apiRoutes);
+app.use('/', htmlRoutes);
+app.use(express.static(path.join(__dirname, "./app/public")));
+app.use(express.static(path.join(__dirname, "./app/data")));
+
+//app.use(apiRoutes.getFriends);
+//app.use(apiRoutes.postFriends);
+//app.use(htmlRoutes.getHome);
+//app.use(htmlRoutes.getSurvey);
+//app.use(friends.submitInfo);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
+

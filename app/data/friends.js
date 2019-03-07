@@ -1,104 +1,112 @@
-var currentFriends = [
-    {
-        "name": "Tom",
-        "photo": "",
-        "scores": [
-            5,
-            3,
-            4,
-            2,
-            3,
-            5,
-            1,
-            2,
-            4,
-            3
-        ]
-    },
-    {
-        "name": "Katie",
-        "photo": "",
-        "scores": [
-            3,
-            4,
-            2,
-            5,
-            1,
-            2,
-            3,
-            4,
-            2,
-            5
-        ]
-    },
-    {
-        "name": "James",
-        "photo": "",
-        "scores": [
-            2,
-            2,
-            5,
-            3,
-            4,
-            1,
-            4,
-            3,
-            1,
-            5
-        ]
-    },
-    {
-        "name": "Lynn",
-        "photo": "",
-        "scores": [
-            4,
-            4,
-            5,
-            2,
-            2,
-            3,
-            1,
-            5,
-            3,
-            2
-        ]
-    },
-    {
-        "name": "Rick",
-        "photo": "",
-        "scores": [
-            1,
-            3,
-            4,
-            2,
-            5,
-            5,
-            1,
-            3,
-            4,
-            1
-        ]
-    },
-    {
-        "name": "Amanda",
-        "photo": "",
-        "scores": [
-            1,
-            5,
-            5,
-            2,
-            3,
-            4,
-            2,
-            3,
-            5,
-            2
-        ]
-    }
-];
+var jsdom = require("jsdom");
+    const { JSDOM } = jsdom;
+    const { window } = new JSDOM();
+    const { document } = (new JSDOM('')).window;
+    global.document = document;
+var $ = jQuery = require('jquery')(window);
 
-module.exports = function ($) {
+    var currentFriends = [
+        {
+            "name": "Tom",
+            "photo": "",
+            "scores": [
+                5,
+                3,
+                4,
+                2,
+                3,
+                5,
+                1,
+                2,
+                4,
+                3
+            ]
+        },
+        {
+            "name": "Katie",
+            "photo": "",
+            "scores": [
+                3,
+                4,
+                2,
+                5,
+                1,
+                2,
+                3,
+                4,
+                2,
+                5
+            ]
+        },
+        {
+            "name": "James",
+            "photo": "",
+            "scores": [
+                2,
+                2,
+                5,
+                3,
+                4,
+                1,
+                4,
+                3,
+                1,
+                5
+            ]
+        },
+        {
+            "name": "Lynn",
+            "photo": "",
+            "scores": [
+                4,
+                4,
+                5,
+                2,
+                2,
+                3,
+                1,
+                5,
+                3,
+                2
+            ]
+        },
+        {
+            "name": "Rick",
+            "photo": "",
+            "scores": [
+                1,
+                3,
+                4,
+                2,
+                5,
+                5,
+                1,
+                3,
+                4,
+                1
+            ]
+        },
+        {
+            "name": "Amanda",
+            "photo": "",
+            "scores": [
+                1,
+                5,
+                5,
+                2,
+                3,
+                4,
+                2,
+                3,
+                5,
+                2
+            ]
+        }
+    ];
+    
 
+
+function submitInfo ($) {
     $(document).on("click", "#submit", function(){
         event.preventDefault();
 
@@ -132,3 +140,8 @@ module.exports = function ($) {
         });
     });
 };
+
+module.exports = {
+    submitInfo: submitInfo,
+
+    };
