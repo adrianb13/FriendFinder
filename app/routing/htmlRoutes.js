@@ -11,7 +11,3 @@ var path = require("path");
     });
 
 module.exports = router;
-/* {
-    getHome: getHome,
-    getSurvey: getSurvey
-} */

@@ -1,17 +1,17 @@
-var friends = require("./../data/friends");
+var friends = require("./../data/friends.js");
 
 var express = require("express");
-var router = express.Router()
+var app = express();
+var router = express.Router();
 
     router.get("/api/friends", function(req, res) {
-        return res.json(friends.currentFriends);
+        return res.json(friends.friendsList());
     });
-
 
     router.post("/api/friends", function(req, res) {
         var newFriend = req.body;
-        currentFriends.push(newFriend);
-        res.json(currentFriends);
+        friends.friendsList(newFriend);
+        res.json(friends.friendsList());
     });
 
 module.exports = router;

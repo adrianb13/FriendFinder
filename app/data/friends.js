@@ -1,134 +1,121 @@
-    var currentFriends = [
-        {
-            "name": "Tom",
-            "photo": "",
-            "scores": [
-                5,
-                3,
-                4,
-                2,
-                3,
-                5,
-                1,
-                2,
-                4,
-                3
-            ]
-        },
-        {
-            "name": "Katie",
-            "photo": "",
-            "scores": [
-                3,
-                4,
-                2,
-                5,
-                1,
-                2,
-                3,
-                4,
-                2,
-                5
-            ]
-        },
-        {
-            "name": "James",
-            "photo": "",
-            "scores": [
-                2,
-                2,
-                5,
-                3,
-                4,
-                1,
-                4,
-                3,
-                1,
-                5
-            ]
-        },
-        {
-            "name": "Lynn",
-            "photo": "",
-            "scores": [
-                4,
-                4,
-                5,
-                2,
-                2,
-                3,
-                1,
-                5,
-                3,
-                2
-            ]
-        },
-        {
-            "name": "Rick",
-            "photo": "",
-            "scores": [
-                1,
-                3,
-                4,
-                2,
-                5,
-                5,
-                1,
-                3,
-                4,
-                1
-            ]
-        },
-        {
-            "name": "Amanda",
-            "photo": "",
-            "scores": [
-                1,
-                5,
-                5,
-                2,
-                3,
-                4,
-                2,
-                3,
-                5,
-                2
-            ]
+
+var currentFriends = [
+    {
+    "name": "Tom",
+    "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Tom_Hardy_by_Gage_Skidmore.jpg/220px-Tom_Hardy_by_Gage_Skidmore.jpg",
+    "scores": [
+        2,
+        2,
+        3,
+        1,
+        3,
+        1,
+        2,
+        3,
+        2,
+        3
+        ]
+    },
+    {
+    "name": "Katie",
+    "photo": "https://cdn1.thr.com/sites/default/files/imagecache/scale_crop_768_433/2017/08/gettyimages-696065416_-_h_2017.jpg",
+    "scores": [
+        3,
+        4,
+        4,
+        5,
+        5,
+        4,
+        5,
+        4,
+        4,
+        5
+        ]
+    },
+    {
+    "name": "James",
+    "photo": "https://www.biography.com/.image/t_share/MTI5MjMwMzk2NDA2NjY3NzQy/james-corden-shutterstock_214425070_600x600jpg.jpg",
+    "scores": [
+        2,
+        2,
+        5,
+        3,
+        4,
+        1,
+        4,
+        3,
+        1,
+        5
+        ]
+    },
+    {
+    "name": "Rachel",
+    "photo": "https://cdnph.upi.com/svc/sv/upi/1331543422647/2018/1/693d7ae2327ca88756b94be902e9a168/Rachel-McAdams-says-motherhood-is-the-greatest-thing.jpg",
+    "scores": [
+        4,
+        4,
+        5,
+        2,
+        4,
+        3,
+        4,
+        5,
+        3,
+        4
+        ]
+    },
+    {
+    "name": "Rick",
+    "photo": "http://rsuradio.com/wp-content/uploads/2016/10/Rick-Astley-640x360.jpg",
+    "scores": [
+        1,
+        2,
+        2,
+        2,
+        1,
+        1,
+        1,
+        3,
+        2,
+        1
+        ]
+    },
+    {
+    "name": "Amanda",
+    "photo": "https://www.hellomagazine.com/imagenes/celebrities/2018090461883/amanda-holden-shares-kids-back-to-school-photos/0-293-758/amanda-holden-bgt-t.jpg",
+    "scores": [
+        1,
+        4,
+        4,
+        2,
+        3,
+        4,
+        2,
+        3,
+        3,
+        2
+        ]
+    }
+];
+
+function scores (){
+    var scoreSum = 0;
+        sumList = [];    
+    for (i = 0; i < currentFriends.length; i++) {
+        currentFriends[i].scores;
+        for (j=0; j < currentFriends[i].scores.length; j++) {
+            scoreSum += currentFriends[i].scores[j];
         }
-    ];
-    
+        sumList.push(scoreSum);
+        scoreSum = 0;
+    }
+};
 
+function friendsList (newFriend) {
+    if (newFriend) {
+    currentFriends.push(newFriend);
+    }
+    return currentFriends;
+}
 
-
-    $(document).on("click", "#submit", function(){
-        event.preventDefault();
-
-        var name = $("#name").val().trim();
-        var photo = $("#photo").val().trim();
-        var scores = [];
-
-        for (i = 1; i < 11; i++) {
-            scores.push($("#q" + i).val())
-        }
-        console.log(scores);
-
-        var newFriend = {
-            name: name,
-            photo: photo,
-            scores: scores
-        }
-        console.log(newFriend);
-        currentFriends.push(newFriend);
-
-        var currentURL = window.location.origin;
-
-        $.post(currentURL + "api/friends", newFriend, function(data) {
-            console.log(data);
-
-            $("#name").val("");
-            $("#photo").val("");
-            for (j = 1; j < 11; j++) {
-                $("#q" + j).val("");
-            }   
-        });
-    });
+module.exports.friendsList = friendsList
