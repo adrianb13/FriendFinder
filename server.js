@@ -14,7 +14,7 @@ var htmlRoutes = require("./app/routing/htmlRoutes.js");
 var friends = require("./app/data/friends.js");
 
 var app = express();
-var PORT = process.env.PORT || 5500;
+var PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
